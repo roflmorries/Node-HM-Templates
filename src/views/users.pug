@@ -1,8 +1,0 @@
-extends index 
-
-block content
-  h1 List of users
-  ul
-    each user in users
-      li 
-        a(href=`/users/${user.id}`) #{user.id}. #{user.name}
