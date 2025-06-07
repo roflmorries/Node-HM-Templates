@@ -1,6 +1,6 @@
 import express from 'express';
 import path from 'node:path';
-import { users } from './data/users.js';
+import usersRouter from './routes/userRouter.js'
 
 const __dirname = import.meta.dirname;
 
@@ -10,15 +10,7 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 
-app.get('/users', (req, res) => {
-  res.render('users', { users });
-})
-
-app.get('/users/:id', (req, res) => {
-  const currentUser = users.find(user => user.id === Number(req.params.id));
-  if (!currentUser) return res.status(404).send('User doesnt exist');
-  res.render('user', { currentUser })
-})
+app.use('/users', usersRouter);
 
 
 const PORT = 3000;
