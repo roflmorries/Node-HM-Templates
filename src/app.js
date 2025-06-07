@@ -3,6 +3,7 @@ import path from 'node:path';
 import usersRouter from './routes/userRouter.js'
 import articleRouter from './routes/articleRouter.js'
 import ejs from 'ejs'
+import logger from './utils/logger.js';
 
 const __dirname = import.meta.dirname;
 
@@ -24,5 +25,5 @@ app.use('/articles', articleRouter);
 const PORT = 3000;
 
 app.listen(PORT, () => {
-  console.log(`The server working on port ${PORT}`) // replace on winston
+  logger.info(`The server working on port ${PORT}`)
 })
